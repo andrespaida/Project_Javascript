@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Web Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    #clock {
+      font-size: 24px;
+      margin: 20px 0;
+      color: #007acc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="greeting">Welcome to my web page!</h1>
+  <div id="clock">Loading time...</div>
+  <button onclick="changeGreeting()">Click me</button>
+
+  <script>
+    function changeGreeting() {
+      document.getElementById("greeting").textContent = "Thanks for visiting!";
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById("clock").textContent = `Current time: ${timeString}`;
+    }
+
+    // Update clock every second
+    setInterval(updateClock, 1000);
+    // Initialize clock immediately
+    updateClock();
+  </script>
+</body>
+</html>
